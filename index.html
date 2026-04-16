@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EcoMove - Simulador de Impacto</title>
+    <title>EcoFerry - Simulador de Impacto</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
-        <h1>🌱 EcoMove</h1>
+        <h1>⛴️ EcoFerry</h1>
         <p>Calcule o impacto financeiro e ambiental da sua locomoção.</p>
 
         <div class="form">
@@ -22,12 +22,22 @@
                 <option value="bike">Bicicleta / A pé</option>
             </select>
 
+            <div class="formulario-perfil">
+                <h3>📝 Perfil de Mobilidade</h3>
+                <label>Frequência semanal:</label>
+                <select id="frequencia">
+                    <option value="5">5 dias por semana</option>
+                    <option value="7">Todos os dias</option>
+                    <option value="3">Híbrido (3 dias)</option>
+                </select>
+            </div>
+
             <button onclick="calcular()">Calcular Impacto</button>
         </div>
 
         <div id="resultado" class="hidden">
             <hr>
-            <h3>Resumo Mensal (22 dias)</h3>
+            <h3>Resumo Mensal Personalizado</h3>
             <div class="cards">
                 <div class="card">
                     <span>💰 Gasto</span>
