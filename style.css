@@ -1,4 +1,4 @@
-/* Configurações Gerais */
+/* Reset Básico */
 * {
     margin: 0;
     padding: 0;
@@ -7,7 +7,7 @@
 
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #e8f5e9; /* Verde bem claro de fundo */
+    background-color: #f0fdf4; /* Um verde bem suave */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -15,30 +15,28 @@ body {
     padding: 20px;
 }
 
-/* Container Principal */
 .container {
     background: white;
     padding: 30px;
     border-radius: 20px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-    max-width: 450px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    max-width: 420px;
     width: 100%;
 }
 
 h1 {
-    color: #2e7d32; /* Verde escuro */
+    color: #166534;
     text-align: center;
-    margin-bottom: 10px;
-    font-size: 2rem;
+    margin-bottom: 8px;
 }
 
 p {
     text-align: center;
     color: #666;
-    margin-bottom: 25px;
+    font-size: 0.9rem;
+    margin-bottom: 20px;
 }
 
-/* Formulário e Inputs */
 .form {
     display: flex;
     flex-direction: column;
@@ -47,123 +45,108 @@ p {
 
 label {
     font-weight: 600;
-    color: #444;
-    margin-bottom: -10px;
-    font-size: 0.9rem;
+    color: #374151;
+    font-size: 0.85rem;
 }
 
 input, select {
     padding: 12px;
     border-radius: 10px;
-    border: 1px solid #ddd;
+    border: 1px solid #d1d5db;
     font-size: 1rem;
-    background-color: #fafafa;
-    transition: border 0.3s;
-}
-
-input:focus, select:focus {
-    border-color: #4caf50;
     outline: none;
 }
 
-/* Seção de Perguntas (Perfil) */
+input:focus, select:focus {
+    border-color: #22c55e;
+}
+
+/* Quadro de Perguntas */
 .formulario-perfil {
-    margin: 10px 0;
+    background-color: #f9fafb;
     padding: 15px;
-    background: #f1f8e9; /* Fundo levemente esverdeado */
     border-radius: 12px;
-    border-left: 5px solid #81c784;
+    border-left: 4px solid #22c55e;
 }
 
 .formulario-perfil h3 {
-    font-size: 1rem;
-    color: #388e3c;
-    margin-bottom: 12px;
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+    color: #166534;
 }
 
-/* Botão de Calcular */
+/* Botão Estilizado */
 button {
-    background-color: #2e7d32;
+    background-color: #166534;
     color: white;
-    padding: 15px;
+    padding: 16px;
     border: none;
-    border-radius: 10px;
-    font-size: 1.1rem;
+    border-radius: 12px;
+    font-size: 1rem;
     font-weight: bold;
     cursor: pointer;
     transition: background 0.3s, transform 0.2s;
-    margin-top: 10px;
 }
 
 button:hover {
-    background-color: #1b5e20;
+    background-color: #15803d;
     transform: translateY(-2px);
 }
 
-button:active {
-    transform: translateY(0);
+/* Lógica da Animação (O espaço que abre) */
+#resultado {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Área de Resultado */
-#resultado {
-    margin-top: 25px;
-    display: none; /* Começa escondido, o JS muda para 'block' */
+#resultado.mostrar {
+    max-height: 500px; /* Valor alto o suficiente para o conteúdo */
+    opacity: 1;
+    margin-top: 20px;
 }
 
 hr {
     border: 0;
-    border-top: 1px solid #eee;
+    border-top: 1px solid #e5e7eb;
     margin-bottom: 20px;
 }
 
-#resultado h3 {
-    text-align: center;
-    color: #333;
+/* Cards de Resultado */
+.cards {
+    display: flex;
+    gap: 10px;
     margin-bottom: 15px;
 }
 
-/* Cards de Gasto e CO2 */
-.cards {
-    display: flex;
-    gap: 15px;
-    margin-bottom: 20px;
-}
-
 .card {
-    background: #ffffff;
-    border: 1px solid #e0e0e0;
+    background: #f0fdf4;
     padding: 15px;
     border-radius: 12px;
     flex: 1;
     text-align: center;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.02);
 }
 
 .card span {
-    font-size: 0.8rem;
+    font-size: 0.7rem;
+    color: #166534;
+    font-weight: bold;
     text-transform: uppercase;
-    color: #888;
-    letter-spacing: 1px;
 }
 
 .card p {
-    font-size: 1.3rem;
-    font-weight: bold;
-    color: #2e7d32;
+    font-size: 1.2rem;
+    font-weight: 800;
+    color: #14532d;
     margin: 5px 0 0 0;
 }
 
-/* Dica Sustentável */
 #dica-sustentavel {
-    font-size: 0.95rem;
-    line-height: 1.4;
-    text-align: center;
+    font-size: 0.85rem;
+    color: #4b5563;
+    background: #fffbeb;
     padding: 10px;
     border-radius: 8px;
-    background-color: #fffde7; /* Amarelo bem clarinho para destaque */
-}
-
-/* Utilitários */
-.hidden {
-    display: none;
+    border: 1px solid #fef3c7;
 }
