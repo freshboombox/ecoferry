@@ -3,41 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EcoFerry - Simulador de Impacto</title>
+    <title>EcoFerry - Seu Simulador Eco-Financeiro</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
     <div class="container">
         <h1>⛴️ EcoFerry</h1>
-        <p>Calcule o impacto financeiro e ambiental da sua locomoção.</p>
+        <p>Transforme seus quilômetros em consciência ambiental e economia.</p>
 
         <div class="form">
-            <label>Distância diária (Ida e volta em km):</label>
-            <input type="number" id="distancia" placeholder="Ex: 15">
+            <label for="distancia">Distância diária (Ida e volta em km):</label>
+            <input type="number" id="distancia" placeholder="Ex: 10" min="1">
 
-            <label>Meio de transporte:</label>
+            <label for="transporte">Como você se move?</label>
             <select id="transporte">
-                <option value="carro">Carro</option>
-                <option value="onibus">Ônibus</option>
-                <option value="bike">Bicicleta / A pé</option>
+                <option value="carro">Carro (Combustão)</option>
+                <option value="onibus">Ônibus Coletivo</option>
+                <option value="bike">Bicicleta ou Caminhada</option>
             </select>
 
             <div class="formulario-perfil">
                 <h3>📝 Perfil de Mobilidade</h3>
-                <label>Frequência semanal:</label>
+                <label for="frequencia">Quantas vezes por semana?</label>
                 <select id="frequencia">
-                    <option value="5">5 dias por semana</option>
-                    <option value="7">Todos os dias</option>
-                    <option value="3">Híbrido (3 dias)</option>
+                    <option value="5">5 dias (Rotina padrão)</option>
+                    <option value="3">3 dias (Híbrido)</option>
+                    <option value="7">Todos os dias (7 dias)</option>
+                    <option value="2">Final de semana (2 dias)</option>
                 </select>
             </div>
 
             <button onclick="calcular()">Calcular Impacto</button>
         </div>
 
-        <div id="resultado" class="hidden">
+        <div id="resultado">
             <hr>
-            <h3>Resumo Mensal Personalizado</h3>
+            <h3>Resumo Mensal Estipulado</h3>
             <div class="cards">
                 <div class="card">
                     <span>💰 Gasto</span>
@@ -51,6 +53,7 @@
             <p id="dica-sustentavel"></p>
         </div>
     </div>
+
     <script src="script.js"></script>
 </body>
 </html>
