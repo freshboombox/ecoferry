@@ -1,51 +1,169 @@
+/* Configurações Gerais */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body {
-    font-family: 'Segoe UI', sans-serif;
-    background-color: #f0f4f8;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #e8f5e9; /* Verde bem claro de fundo */
     display: flex;
     justify-content: center;
+    align-items: center;
+    min-height: 100vh;
     padding: 20px;
 }
 
+/* Container Principal */
 .container {
     background: white;
     padding: 30px;
-    border-radius: 15px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-    max-width: 400px;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    max-width: 450px;
     width: 100%;
 }
 
-h1 { color: #2d5a27; text-align: center; }
-
-.form { display: flex; flex-direction: column; gap: 10px; }
-
-input, select, button {
-    padding: 10px;
-    border-radius: 8px;
-    border: 1px solid #ccc;
+h1 {
+    color: #2e7d32; /* Verde escuro */
+    text-align: center;
+    margin-bottom: 10px;
+    font-size: 2rem;
 }
 
+p {
+    text-align: center;
+    color: #666;
+    margin-bottom: 25px;
+}
+
+/* Formulário e Inputs */
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+label {
+    font-weight: 600;
+    color: #444;
+    margin-bottom: -10px;
+    font-size: 0.9rem;
+}
+
+input, select {
+    padding: 12px;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    font-size: 1rem;
+    background-color: #fafafa;
+    transition: border 0.3s;
+}
+
+input:focus, select:focus {
+    border-color: #4caf50;
+    outline: none;
+}
+
+/* Seção de Perguntas (Perfil) */
+.formulario-perfil {
+    margin: 10px 0;
+    padding: 15px;
+    background: #f1f8e9; /* Fundo levemente esverdeado */
+    border-radius: 12px;
+    border-left: 5px solid #81c784;
+}
+
+.formulario-perfil h3 {
+    font-size: 1rem;
+    color: #388e3c;
+    margin-bottom: 12px;
+}
+
+/* Botão de Calcular */
 button {
-    background-color: #4caf50;
+    background-color: #2e7d32;
     color: white;
+    padding: 15px;
     border: none;
-    cursor: pointer;
+    border-radius: 10px;
+    font-size: 1.1rem;
     font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+    margin-top: 10px;
 }
 
-button:hover { background-color: #45a049; }
+button:hover {
+    background-color: #1b5e20;
+    transform: translateY(-2px);
+}
 
-.hidden { display: none; }
+button:active {
+    transform: translateY(0);
+}
 
-.cards { display: flex; gap: 10px; margin-top: 15px; }
+/* Área de Resultado */
+#resultado {
+    margin-top: 25px;
+    display: none; /* Começa escondido, o JS muda para 'block' */
+}
+
+hr {
+    border: 0;
+    border-top: 1px solid #eee;
+    margin-bottom: 20px;
+}
+
+#resultado h3 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+/* Cards de Gasto e CO2 */
+.cards {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+}
 
 .card {
-    background: #e8f5e9;
+    background: #ffffff;
+    border: 1px solid #e0e0e0;
     padding: 15px;
-    border-radius: 10px;
+    border-radius: 12px;
     flex: 1;
     text-align: center;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.02);
 }
 
-.card span { font-size: 0.8rem; color: #666; }
-.card p { font-size: 1.2rem; font-weight: bold; color: #2d5a27; margin: 5px 0; }
+.card span {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    color: #888;
+    letter-spacing: 1px;
+}
+
+.card p {
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: #2e7d32;
+    margin: 5px 0 0 0;
+}
+
+/* Dica Sustentável */
+#dica-sustentavel {
+    font-size: 0.95rem;
+    line-height: 1.4;
+    text-align: center;
+    padding: 10px;
+    border-radius: 8px;
+    background-color: #fffde7; /* Amarelo bem clarinho para destaque */
+}
+
+/* Utilitários */
+.hidden {
+    display: none;
+}
