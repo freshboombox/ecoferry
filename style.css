@@ -7,7 +7,7 @@
 
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #f0fdf4; /* Um verde bem suave */
+    background-color: #f0fdf4;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -61,7 +61,6 @@ input:focus, select:focus {
     border-color: #22c55e;
 }
 
-/* Quadro de Perguntas */
 .formulario-perfil {
     background-color: #f9fafb;
     padding: 15px;
@@ -75,7 +74,6 @@ input:focus, select:focus {
     color: #166534;
 }
 
-/* Botão Estilizado */
 button {
     background-color: #166534;
     color: white;
@@ -93,7 +91,7 @@ button:hover {
     transform: translateY(-2px);
 }
 
-/* Lógica da Animação (O espaço que abre) */
+/* Lógica da Animação */
 #resultado {
     max-height: 0;
     opacity: 0;
@@ -102,7 +100,7 @@ button:hover {
 }
 
 #resultado.mostrar {
-    max-height: 500px; /* Valor alto o suficiente para o conteúdo */
+    max-height: 500px;
     opacity: 1;
     margin-top: 20px;
 }
@@ -113,7 +111,6 @@ hr {
     margin-bottom: 20px;
 }
 
-/* Cards de Resultado */
 .cards {
     display: flex;
     gap: 10px;
@@ -149,4 +146,14 @@ hr {
     padding: 10px;
     border-radius: 8px;
     border: 1px solid #fef3c7;
+}
+
+/* Estilo da Observação no fundo */
+.observacao {
+    margin-top: 20px;
+    font-size: 0.7rem;
+    color: #9ca3af;
+    text-align: center;
+    font-style: italic;
+    margin-bottom: 0; /* Remove a margem de baixo padrão dos parágrafos */
 }
