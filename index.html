@@ -3,58 +3,72 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EcoFerry - Seu Simulador Eco-Financeiro</title>
+    <title>EcoFerry | Seu bolso e o planeta agradecem</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
 </head>
 <body>
 
-    <div class="container">
-        <h1>⛴️ EcoFerry</h1>
-        <p>Transforme seus quilômetros em consciência ambiental e economia.</p>
+    <main class="glass-container">
+        <header>
+            <span class="badge">Sustentabilidade Urbana</span>
+            <h1>EcoFerry<span>.</span></h1>
+            <p>Bora ver quanto o seu trajeto tá custando pro seu bolso e pro mundo?</p>
+        </header>
 
-        <div class="form">
-            <label for="distancia">Distância diária (Ida e volta em km):</label>
-            <input type="number" id="distancia" placeholder="Ex: 10" min="1">
+        <section class="calculator-box">
+            <div class="input-group">
+                <label>Distância diária (ida + volta)</label>
+                <div class="input-wrapper">
+                    <input type="number" id="distancia" placeholder="Ex: 12">
+                    <span class="unit">km</span>
+                </div>
+            </div>
 
-            <label for="transporte">Como você se move?</label>
-            <select id="transporte">
-                <option value="carro">Carro (Combustão)</option>
-                <option value="onibus">Ônibus Coletivo</option>
-                <option value="bike">Bicicleta ou Caminhada</option>
-            </select>
-
-            <div class="formulario-perfil">
-                <h3>📝 Perfil de Mobilidade</h3>
-                <label for="frequencia">Quantas vezes por semana?</label>
-                <select id="frequencia">
-                    <option value="5">5 dias (Rotina padrão)</option>
-                    <option value="3">3 dias (Híbrido)</option>
-                    <option value="7">Todos os dias (7 dias)</option>
-                    <option value="2">Final de semana (2 dias)</option>
+            <div class="input-group">
+                <label>Como você vai?</label>
+                <select id="transporte">
+                    <option value="carro">🚗 De carro (Combustão)</option>
+                    <option value="onibus">🚌 No busão (Coletivo)</option>
+                    <option value="bike">🚲 Pedalando / A pé</option>
                 </select>
             </div>
 
-            <button onclick="calcular()">Calcular Impacto</button>
-        </div>
-
-        <div id="resultado">
-            <hr>
-            <h3>Resumo Mensal Estipulado</h3>
-            <div class="cards">
-                <div class="card">
-                    <span>💰 Gasto</span>
-                    <p id="res-gasto">R$ 0,00</p>
-                </div>
-                <div class="card">
-                    <span>☁️ CO2</span>
-                    <p id="res-co2">0 kg</p>
+            <div class="input-group">
+                <label>Frequência na semana</label>
+                <div class="chips" id="frequencia-chips">
+                    <input type="radio" name="freq" value="3" id="f3"><label for="f3">3x</label>
+                    <input type="radio" name="freq" value="5" id="f5" checked><label for="f5">5x</label>
+                    <input type="radio" name="freq" value="7" id="f7"><label for="f7">Diário</label>
                 </div>
             </div>
-            <p id="dica-sustentavel"></p>
-        </div>
 
-        <p class="observacao">*O site pode cometer erros devido a mudança de preços do combustível ou valor de passagem de ônibus de cidade para cidade</p>
-    </div>
+            <button onclick="gerarImpacto()" id="btn-calc">Calcular meu impacto</button>
+        </section>
+
+        <section id="resultado" class="results-area">
+            <div class="loading-bar"><div class="progress"></div></div>
+            
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <small>Gasto mensal</small>
+                    <h2 id="res-gasto">R$ 0,00</h2>
+                </div>
+                <div class="stat-card">
+                    <small>Pegada de CO2</small>
+                    <h2 id="res-co2">0 kg</h2>
+                </div>
+            </div>
+            
+            <div class="insight-box">
+                <p id="dica-sustentavel"></p>
+            </div>
+        </section>
+
+        <footer>
+            <p class="disclaimer">*O EcoFerry usa médias estimadas. Preços de combustíveis e tarifas podem variar na sua região.</p>
+        </footer>
+    </main>
 
     <script src="script.js"></script>
 </body>
