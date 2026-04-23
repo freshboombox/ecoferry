@@ -1,159 +1,144 @@
-/* Reset Básico */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+:root {
+    --primary: #10b981;
+    --primary-dark: #059669;
+    --bg-gradient: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+    --text-main: #1f2937;
+    --glass-bg: rgba(255, 255, 255, 0.8);
 }
 
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #f0fdf4;
+    font-family: 'Inter', sans-serif;
+    background: var(--bg-gradient);
+    color: var(--text-main);
+    min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
     padding: 20px;
 }
 
-.container {
-    background: white;
-    padding: 30px;
-    border-radius: 20px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-    max-width: 420px;
+.glass-container {
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    padding: 40px;
+    border-radius: 24px;
     width: 100%;
+    max-width: 480px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.05);
 }
 
-h1 {
-    color: #166534;
-    text-align: center;
-    margin-bottom: 8px;
-}
+header { text-align: center; margin-bottom: 30px; }
 
-p {
-    text-align: center;
-    color: #666;
-    font-size: 0.9rem;
-    margin-bottom: 20px;
-}
-
-.form {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
-
-label {
+.badge {
+    background: #d1fae5;
+    color: var(--primary-dark);
+    padding: 4px 12px;
+    border-radius: 99px;
+    font-size: 0.75rem;
     font-weight: 600;
-    color: #374151;
-    font-size: 0.85rem;
-}
-
-input, select {
-    padding: 12px;
-    border-radius: 10px;
-    border: 1px solid #d1d5db;
-    font-size: 1rem;
-    outline: none;
-}
-
-input:focus, select:focus {
-    border-color: #22c55e;
-}
-
-.formulario-perfil {
-    background-color: #f9fafb;
-    padding: 15px;
-    border-radius: 12px;
-    border-left: 4px solid #22c55e;
-}
-
-.formulario-perfil h3 {
-    font-size: 0.9rem;
-    margin-bottom: 10px;
-    color: #166534;
-}
-
-button {
-    background-color: #166534;
-    color: white;
-    padding: 16px;
-    border: none;
-    border-radius: 12px;
-    font-size: 1rem;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background 0.3s, transform 0.2s;
-}
-
-button:hover {
-    background-color: #15803d;
-    transform: translateY(-2px);
-}
-
-/* Lógica da Animação */
-#resultado {
-    max-height: 0;
-    opacity: 0;
-    overflow: hidden;
-    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-#resultado.mostrar {
-    max-height: 500px;
-    opacity: 1;
-    margin-top: 20px;
-}
-
-hr {
-    border: 0;
-    border-top: 1px solid #e5e7eb;
-    margin-bottom: 20px;
-}
-
-.cards {
-    display: flex;
-    gap: 10px;
-    margin-bottom: 15px;
-}
-
-.card {
-    background: #f0fdf4;
-    padding: 15px;
-    border-radius: 12px;
-    flex: 1;
-    text-align: center;
-}
-
-.card span {
-    font-size: 0.7rem;
-    color: #166534;
-    font-weight: bold;
     text-transform: uppercase;
 }
 
-.card p {
-    font-size: 1.2rem;
-    font-weight: 800;
-    color: #14532d;
-    margin: 5px 0 0 0;
+h1 { font-size: 2.5rem; font-weight: 800; color: #064e3b; margin-top: 10px; }
+h1 span { color: var(--primary); }
+
+.input-group { margin-bottom: 20px; }
+label { display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 8px; color: #4b5563; }
+
+.input-wrapper { position: relative; display: flex; align-items: center; }
+
+input, select {
+    width: 100%;
+    padding: 14px;
+    border: 2px solid #e5e7eb;
+    border-radius: 12px;
+    font-size: 1rem;
+    transition: 0.3s;
+    background: white;
 }
 
-#dica-sustentavel {
-    font-size: 0.85rem;
-    color: #4b5563;
-    background: #fffbeb;
-    padding: 10px;
-    border-radius: 8px;
-    border: 1px solid #fef3c7;
-}
+input:focus, select:focus { border-color: var(--primary); outline: none; }
 
-/* Estilo da Observação no fundo */
-.observacao {
-    margin-top: 20px;
-    font-size: 0.7rem;
-    color: #9ca3af;
+.unit { position: absolute; right: 15px; color: #9ca3af; font-weight: 600; }
+
+/* Chips de Frequência */
+.chips { display: flex; gap: 10px; }
+.chips input { display: none; }
+.chips label {
+    flex: 1;
     text-align: center;
-    font-style: italic;
-    margin-bottom: 0; /* Remove a margem de baixo padrão dos parágrafos */
+    padding: 10px;
+    background: white;
+    border: 2px solid #e5e7eb;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.2s;
+    margin-bottom: 0;
 }
+
+.chips input:checked + label {
+    background: var(--primary);
+    color: white;
+    border-color: var(--primary);
+}
+
+button {
+    width: 100%;
+    background: var(--primary);
+    color: white;
+    padding: 18px;
+    border: none;
+    border-radius: 14px;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.3s;
+    margin-top: 10px;
+}
+
+button:hover { background: var(--primary-dark); transform: translateY(-2px); }
+
+/* Área de Resultados Humana */
+.results-area {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: all 0.5s ease;
+}
+
+.results-area.active { max-height: 500px; opacity: 1; margin-top: 30px; }
+
+.loading-bar {
+    width: 100%;
+    height: 4px;
+    background: #f3f4f6;
+    margin-bottom: 20px;
+    display: none;
+}
+
+.progress { width: 0; height: 100%; background: var(--primary); transition: width 0.8s ease; }
+
+.stats-grid { display: flex; gap: 15px; margin-bottom: 20px; }
+.stat-card {
+    background: white;
+    padding: 20px;
+    border-radius: 16px;
+    flex: 1;
+    border: 1px solid #f3f4f6;
+}
+
+.stat-card small { color: #6b7280; font-size: 0.75rem; font-weight: 600; }
+.stat-card h2 { color: #064e3b; font-size: 1.4rem; margin-top: 5px; }
+
+.insight-box {
+    background: #fffbeb;
+    padding: 15px;
+    border-radius: 12px;
+    border-left: 4px solid #f59e0b;
+    font-size: 0.9rem;
+}
+
+.disclaimer { font-size: 0.65rem; color: #9ca3af; text-align: center; margin-top: 30px; line-height: 1.4; }
