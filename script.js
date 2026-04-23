@@ -1,55 +1,55 @@
-function calcular() {
-    console.log("O botão foi clicado com sucesso!");
+function gerarImpacto() {
+    const btn = document.getElementById('btn-calc');
+    const km = parseFloat(document.getElementById('distancia').value);
+    const transporte = document.getElementById('transporte').value;
+    const freq = parseInt(document.querySelector('input[name="freq"]:checked').value);
+    const areaResultado = document.getElementById('resultado');
+    const barra = document.querySelector('.loading-bar');
+    const progresso = document.querySelector('.progress');
 
-    // 1. Captura os elementos da tela
-    const campoDistancia = document.getElementById('distancia');
-    const campoTransporte = document.getElementById('transporte');
-    const campoFrequencia = document.getElementById('frequencia');
-    const divResultado = document.getElementById('resultado');
-
-    // 2. Transforma os textos em números reais
-    const kmDiario = parseFloat(campoDistancia.value);
-    const transporte = campoTransporte.value;
-    const diasPorSemana = parseInt(campoFrequencia.value);
-
-    // 3. Validação de segurança
-    if (isNaN(kmDiario) || kmDiario <= 0) {
-        alert("Ops! Você esqueceu de colocar a distância percorrida.");
-        return; 
+    if (!km || km <= 0) {
+        alert("Ei, coloca a distância pra gente calcular! 😉");
+        return;
     }
 
-    // 4. Lógica de cálculo (Baseada em 4 semanas por mês)
-    const kmMensal = kmDiario * diasPorSemana * 4;
-    let custoTotal = 0;
-    let co2Total = 0;
-
-    if (transporte === "carro") {
-        custoTotal = kmMensal * 0.85; 
-        co2Total = kmMensal * 0.120;  
-    } else if (transporte === "onibus") {
-        custoTotal = kmMensal * 0.50; 
-        co2Total = kmMensal * 0.030;  
-    } else if (transporte === "bike") {
-        custoTotal = 0;
-        co2Total = 0;
-    }
-
-    // 5. Inserir os valores nos campos
-    document.getElementById('res-gasto').innerText = "R$ " + custoTotal.toFixed(2).replace('.', ',');
-    document.getElementById('res-co2').innerText = co2Total.toFixed(2) + " kg";
-
-    // 6. Mensagem Dinâmica
-    const dica = document.getElementById('dica-sustentavel');
-    if (custoTotal > 0) {
-        dica.innerHTML = `<strong>Dica EcoFerry:</strong> Você percorre ${kmMensal}km por mês. Tente usar bike 1x na semana para economizar!`;
-    } else {
-        dica.innerHTML = "<strong>Parabéns!</strong> Você é um herói do planeta! Pegada de carbono zero. 🌱";
-    }
-
-    // 7. Animação de Resultado
-    divResultado.classList.remove('mostrar');
+    // Efeito de "Pensando..."
+    btn.innerText = "Processando...";
+    btn.disabled = true;
+    barra.style.display = "block";
     
     setTimeout(() => {
-        divResultado.classList.add('mostrar');
-    }, 10);
+        progresso.style.width = "100%";
+        
+        setTimeout(() => {
+            exibirResultados(km, transporte, freq);
+            areaResultado.classList.add('active');
+            btn.innerText = "Recalcular impacto";
+            btn.disabled = false;
+        }, 800);
+    }, 100);
+}
+
+function exibirResultados(km, modal, freq) {
+    const kmMes = km * freq * 4.3; // Média de semanas no mês
+    let custo = 0;
+    let co2 = 0;
+    let msg = "";
+
+    if (modal === "carro") {
+        custo = kmMes * 0.92; // Valor atualizado médio
+        co2 = kmMes * 0.130;
+        msg = "O carro te dá conforto, mas olha esse custo! Já pensou em revezar carona com alguém do trampo?";
+    } else if (modal === "onibus") {
+        custo = kmMes * 0.45;
+        co2 = kmMes * 0.025;
+        msg = "Mandou bem! O transporte público é uma das melhores formas de aliviar o trânsito e o planeta.";
+    } else {
+        custo = 0;
+        co2 = 0;
+        msg = "Nível lendário! 🚲 Você não gasta nada e ainda ganha saúde. O planeta te deve um abraço!";
+    }
+
+    document.getElementById('res-gasto').innerText = `R$ ${custo.toLocaleString('pt-BR', {minimumFractionDigits: 2})}`;
+    document.getElementById('res-co2').innerText = `${co2.toFixed(1)} kg`;
+    document.getElementById('dica-sustentavel').innerHTML = `<strong>Dica do EcoFerry:</strong> ${msg}`;
 }
